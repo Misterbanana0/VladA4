@@ -1,0 +1,271 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище ip47Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Coтрудники">
+    <Key>
+      <PropertyRef Name="id сотрудника" />
+    </Key>
+    <Property Name="id сотрудника" Type="int" Nullable="false" />
+    <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+    <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+    <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+    <Property Name="ПаспортныеДанные" Type="nvarchar" MaxLength="50" />
+    <Property Name="Квалификация" Type="nvarchar" MaxLength="50" />
+    <Property Name="Стаж" Type="nvarchar" MaxLength="50" />
+    <Property Name="Должность" Type="int" />
+  </EntityType>
+  <EntityType Name="Авторизация">
+    <Key>
+      <PropertyRef Name="Код авторизации" />
+    </Key>
+    <Property Name="Код авторизации" Type="int" Nullable="false" />
+    <Property Name="Логин" Type="nvarchar" MaxLength="50" />
+    <Property Name="Пароль" Type="nvarchar" MaxLength="50" />
+    <Property Name="id сотрудника" Type="int" />
+    <Property Name="Аватарка" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Дoлжности">
+    <Key>
+      <PropertyRef Name="id должности" />
+    </Key>
+    <Property Name="id должности" Type="int" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Заказы">
+    <Key>
+      <PropertyRef Name="id заказа" />
+    </Key>
+    <Property Name="id заказа" Type="int" Nullable="false" />
+    <Property Name="Дата исполнения" Type="nvarchar" MaxLength="50" />
+    <Property Name="№ Договора" Type="nvarchar" MaxLength="50" />
+    <Property Name="Клиент" Type="int" />
+    <Property Name="Дата создания" Type="datetime" />
+    <Property Name="id статус заказа" Type="int" />
+  </EntityType>
+  <EntityType Name="исполнители">
+    <Key>
+      <PropertyRef Name="Заказ" />
+      <PropertyRef Name="Исполнитель" />
+    </Key>
+    <Property Name="Заказ" Type="int" Nullable="false" />
+    <Property Name="Исполнитель" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Клиeнты">
+    <Key>
+      <PropertyRef Name="id Клиента" />
+    </Key>
+    <Property Name="id Клиента" Type="int" Nullable="false" />
+    <Property Name="Организация" Type="int" />
+    <Property Name="адрес" Type="nvarchar" MaxLength="50" />
+    <Property Name="Номер телефона" Type="nvarchar" MaxLength="50" />
+    <Property Name="Фамилия" Type="nvarchar" MaxLength="50" />
+    <Property Name="Имя" Type="nvarchar" MaxLength="50" />
+    <Property Name="Отчество" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Организация">
+    <Key>
+      <PropertyRef Name="Код организации" />
+    </Key>
+    <Property Name="Код организации" Type="int" Nullable="false" />
+    <Property Name="Полное название" Type="nvarchar" MaxLength="50" />
+    <Property Name="E-mail" Type="nvarchar" MaxLength="50" />
+    <Property Name="Телефон" Type="nvarchar" MaxLength="50" />
+    <Property Name="Адрес" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Статусы заказов">
+    <Key>
+      <PropertyRef Name="id статуса заказа" />
+    </Key>
+    <Property Name="id статуса заказа" Type="int" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Услуги">
+    <Key>
+      <PropertyRef Name="ID услуги" />
+    </Key>
+    <Property Name="ID услуги" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Название" Type="nvarchar" MaxLength="50" />
+    <Property Name="Цена" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Услуги заказы">
+    <Key>
+      <PropertyRef Name="id заказа" />
+      <PropertyRef Name="id услуги" />
+    </Key>
+    <Property Name="id заказа" Type="int" Nullable="false" />
+    <Property Name="id услуги" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Coтрудники_Дoлжности">
+    <End Role="Дoлжности" Type="Self.Дoлжности" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Coтрудники" Type="Self.Coтрудники" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Дoлжности">
+        <PropertyRef Name="id должности" />
+      </Principal>
+      <Dependent Role="Coтрудники">
+        <PropertyRef Name="Должность" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Авторизация_Coтрудники">
+    <End Role="Coтрудники" Type="Self.Coтрудники" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Авторизация" Type="Self.Авторизация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coтрудники">
+        <PropertyRef Name="id сотрудника" />
+      </Principal>
+      <Dependent Role="Авторизация">
+        <PropertyRef Name="id сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказы_Клиeнты">
+    <End Role="Клиeнты" Type="Self.Клиeнты" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Заказы" Type="Self.Заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиeнты">
+        <PropertyRef Name="id Клиента" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="Клиент" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказы_Статусы заказов">
+    <End Role="Статусы заказов" Type="Self.Статусы заказов" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Заказы" Type="Self.Заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Статусы заказов">
+        <PropertyRef Name="id статуса заказа" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="id статус заказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_исполнители_Coтрудники">
+    <End Role="Coтрудники" Type="Self.Coтрудники" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="исполнители" Type="Self.исполнители" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coтрудники">
+        <PropertyRef Name="id сотрудника" />
+      </Principal>
+      <Dependent Role="исполнители">
+        <PropertyRef Name="Исполнитель" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_исполнители_Заказы">
+    <End Role="Заказы" Type="Self.Заказы" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="исполнители" Type="Self.исполнители" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заказы">
+        <PropertyRef Name="id заказа" />
+      </Principal>
+      <Dependent Role="исполнители">
+        <PropertyRef Name="Заказ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Клиeнты_Организация">
+    <End Role="Организация" Type="Self.Организация" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Клиeнты" Type="Self.Клиeнты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Организация">
+        <PropertyRef Name="Код организации" />
+      </Principal>
+      <Dependent Role="Клиeнты">
+        <PropertyRef Name="Организация" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Услуги заказы_Заказы">
+    <End Role="Заказы" Type="Self.Заказы" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Услуги заказы" Type="Self.Услуги заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Заказы">
+        <PropertyRef Name="id заказа" />
+      </Principal>
+      <Dependent Role="Услуги заказы">
+        <PropertyRef Name="id заказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Услуги заказы_Услуги">
+    <End Role="Услуги" Type="Self.Услуги" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Услуги заказы" Type="Self.Услуги заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Услуги">
+        <PropertyRef Name="ID услуги" />
+      </Principal>
+      <Dependent Role="Услуги заказы">
+        <PropertyRef Name="id услуги" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище ip47ModelContainer">
+    <EntitySet Name="Coтрудники" EntityType="Self.Coтрудники" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Авторизация" EntityType="Self.Авторизация" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Дoлжности" EntityType="Self.Дoлжности" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Заказы" EntityType="Self.Заказы" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="исполнители" EntityType="Self.исполнители" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Клиeнты" EntityType="Self.Клиeнты" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Организация" EntityType="Self.Организация" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Статусы заказов" EntityType="Self.Статусы заказов" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Услуги" EntityType="Self.Услуги" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Услуги заказы" EntityType="Self.Услуги заказы" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Coтрудники_Дoлжности" Association="Self.FK_Coтрудники_Дoлжности">
+      <End Role="Дoлжности" EntitySet="Дoлжности" />
+      <End Role="Coтрудники" EntitySet="Coтрудники" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Авторизация_Coтрудники" Association="Self.FK_Авторизация_Coтрудники">
+      <End Role="Coтрудники" EntitySet="Coтрудники" />
+      <End Role="Авторизация" EntitySet="Авторизация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказы_Клиeнты" Association="Self.FK_Заказы_Клиeнты">
+      <End Role="Клиeнты" EntitySet="Клиeнты" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказы_Статусы заказов" Association="Self.FK_Заказы_Статусы заказов">
+      <End Role="Статусы заказов" EntitySet="Статусы заказов" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_исполнители_Coтрудники" Association="Self.FK_исполнители_Coтрудники">
+      <End Role="Coтрудники" EntitySet="Coтрудники" />
+      <End Role="исполнители" EntitySet="исполнители" />
+    </AssociationSet>
+    <AssociationSet Name="FK_исполнители_Заказы" Association="Self.FK_исполнители_Заказы">
+      <End Role="Заказы" EntitySet="Заказы" />
+      <End Role="исполнители" EntitySet="исполнители" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Клиeнты_Организация" Association="Self.FK_Клиeнты_Организация">
+      <End Role="Организация" EntitySet="Организация" />
+      <End Role="Клиeнты" EntitySet="Клиeнты" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Услуги заказы_Заказы" Association="Self.FK_Услуги заказы_Заказы">
+      <End Role="Заказы" EntitySet="Заказы" />
+      <End Role="Услуги заказы" EntitySet="Услуги заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Услуги заказы_Услуги" Association="Self.FK_Услуги заказы_Услуги">
+      <End Role="Услуги" EntitySet="Услуги" />
+      <End Role="Услуги заказы" EntitySet="Услуги заказы" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

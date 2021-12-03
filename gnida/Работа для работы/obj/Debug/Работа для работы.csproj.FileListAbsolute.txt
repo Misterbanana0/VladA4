@@ -1,0 +1,28 @@
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы.csprojAssemblyReference.cache
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\MainWindow.g.cs
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\App.g.cs
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы_MarkupCompile.cache
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы_MarkupCompile.lref
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\bin\Debug\Работа для работы.exe.config
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\bin\Debug\Работа для работы.exe
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\bin\Debug\Работа для работы.pdb
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\MainWindow.baml
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы.g.resources
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа_для_работы.Properties.Resources.resources
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы.csproj.GenerateResource.cache
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы.csproj.CoreCompileInputs.cache
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы.exe
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы.pdb
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\bin\Debug\EntityFramework.dll
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\bin\Debug\EntityFramework.SqlServer.dll
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\bin\Debug\EntityFramework.xml
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\bin\Debug\EntityFramework.SqlServer.xml
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\bin\Debug\ru\EntityFramework.resources.dll
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы_Content.g.cs
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\App.baml
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\ресурсы\Themes\Tema.baml
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Работа для работы.csproj.CopyComplete
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Window1.g.cs
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Window1.baml
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Window2.g.cs
+Y:\Student\18ИП2\УП.07\2 подгруппа\Тюкальцев Данил\gnida\Работа для работы\obj\Debug\Window2.baml

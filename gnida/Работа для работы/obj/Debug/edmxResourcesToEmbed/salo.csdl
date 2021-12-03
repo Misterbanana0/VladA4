@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ip47Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Coтрудники" EntityType="ip47Model.Coтрудники" />
+    <EntitySet Name="Авторизация" EntityType="ip47Model.Авторизация" />
+    <EntitySet Name="Дoлжности" EntityType="ip47Model.Дoлжности" />
+    <EntitySet Name="Заказы" EntityType="ip47Model.Заказы" />
+    <EntitySet Name="Клиeнты" EntityType="ip47Model.Клиeнты" />
+    <EntitySet Name="Организация" EntityType="ip47Model.Организация" />
+    <EntitySet Name="Статусы_заказов" EntityType="ip47Model.Статусы_заказов" />
+    <EntitySet Name="Услуги" EntityType="ip47Model.Услуги" />
+    <AssociationSet Name="FK_Coтрудники_Дoлжности" Association="ip47Model.FK_Coтрудники_Дoлжности">
+      <End Role="Дoлжности" EntitySet="Дoлжности" />
+      <End Role="Coтрудники" EntitySet="Coтрудники" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Авторизация_Coтрудники" Association="ip47Model.FK_Авторизация_Coтрудники">
+      <End Role="Coтрудники" EntitySet="Coтрудники" />
+      <End Role="Авторизация" EntitySet="Авторизация" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказы_Клиeнты" Association="ip47Model.FK_Заказы_Клиeнты">
+      <End Role="Клиeнты" EntitySet="Клиeнты" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Заказы_Статусы_заказов" Association="ip47Model.FK_Заказы_Статусы_заказов">
+      <End Role="Статусы_заказов" EntitySet="Статусы_заказов" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Клиeнты_Организация" Association="ip47Model.FK_Клиeнты_Организация">
+      <End Role="Организация" EntitySet="Организация" />
+      <End Role="Клиeнты" EntitySet="Клиeнты" />
+    </AssociationSet>
+    <AssociationSet Name="исполнители" Association="ip47Model.исполнители">
+      <End Role="Coтрудники" EntitySet="Coтрудники" />
+      <End Role="Заказы" EntitySet="Заказы" />
+    </AssociationSet>
+    <AssociationSet Name="Услуги_заказы" Association="ip47Model.Услуги_заказы">
+      <End Role="Заказы" EntitySet="Заказы" />
+      <End Role="Услуги" EntitySet="Услуги" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Coтрудники">
+    <Key>
+      <PropertyRef Name="id_сотрудника" />
+    </Key>
+    <Property Name="id_сотрудника" Type="Int32" Nullable="false" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ПаспортныеДанные" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Квалификация" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Стаж" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Должность" Type="Int32" />
+    <NavigationProperty Name="Дoлжности" Relationship="ip47Model.FK_Coтрудники_Дoлжности" FromRole="Coтрудники" ToRole="Дoлжности" />
+    <NavigationProperty Name="Авторизация" Relationship="ip47Model.FK_Авторизация_Coтрудники" FromRole="Coтрудники" ToRole="Авторизация" />
+    <NavigationProperty Name="Заказы" Relationship="ip47Model.исполнители" FromRole="Coтрудники" ToRole="Заказы" />
+  </EntityType>
+  <EntityType Name="Авторизация">
+    <Key>
+      <PropertyRef Name="Код_авторизации" />
+    </Key>
+    <Property Name="Код_авторизации" Type="Int32" Nullable="false" />
+    <Property Name="Логин" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Пароль" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_сотрудника" Type="Int32" />
+    <Property Name="Аватарка" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Coтрудники" Relationship="ip47Model.FK_Авторизация_Coтрудники" FromRole="Авторизация" ToRole="Coтрудники" />
+  </EntityType>
+  <EntityType Name="Дoлжности">
+    <Key>
+      <PropertyRef Name="id_должности" />
+    </Key>
+    <Property Name="id_должности" Type="Int32" Nullable="false" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Coтрудники" Relationship="ip47Model.FK_Coтрудники_Дoлжности" FromRole="Дoлжности" ToRole="Coтрудники" />
+  </EntityType>
+  <EntityType Name="Заказы">
+    <Key>
+      <PropertyRef Name="id_заказа" />
+    </Key>
+    <Property Name="id_заказа" Type="Int32" Nullable="false" />
+    <Property Name="Дата_исполнения" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="C__Договора" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Клиент" Type="Int32" />
+    <Property Name="Дата_создания" Type="DateTime" Precision="3" />
+    <Property Name="id_статус_заказа" Type="Int32" />
+    <NavigationProperty Name="Клиeнты" Relationship="ip47Model.FK_Заказы_Клиeнты" FromRole="Заказы" ToRole="Клиeнты" />
+    <NavigationProperty Name="Статусы_заказов" Relationship="ip47Model.FK_Заказы_Статусы_заказов" FromRole="Заказы" ToRole="Статусы_заказов" />
+    <NavigationProperty Name="Coтрудники" Relationship="ip47Model.исполнители" FromRole="Заказы" ToRole="Coтрудники" />
+    <NavigationProperty Name="Услуги" Relationship="ip47Model.Услуги_заказы" FromRole="Заказы" ToRole="Услуги" />
+  </EntityType>
+  <EntityType Name="Клиeнты">
+    <Key>
+      <PropertyRef Name="id_Клиента" />
+    </Key>
+    <Property Name="id_Клиента" Type="Int32" Nullable="false" />
+    <Property Name="Организация" Type="Int32" />
+    <Property Name="адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Номер_телефона" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Фамилия" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Имя" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Отчество" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Заказы" Relationship="ip47Model.FK_Заказы_Клиeнты" FromRole="Клиeнты" ToRole="Заказы" />
+    <NavigationProperty Name="Организация1" Relationship="ip47Model.FK_Клиeнты_Организация" FromRole="Клиeнты" ToRole="Организация" />
+  </EntityType>
+  <EntityType Name="Организация">
+    <Key>
+      <PropertyRef Name="Код_организации" />
+    </Key>
+    <Property Name="Код_организации" Type="Int32" Nullable="false" />
+    <Property Name="Полное_название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="E_mail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Телефон" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Адрес" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Клиeнты" Relationship="ip47Model.FK_Клиeнты_Организация" FromRole="Организация" ToRole="Клиeнты" />
+  </EntityType>
+  <EntityType Name="Статусы_заказов">
+    <Key>
+      <PropertyRef Name="id_статуса_заказа" />
+    </Key>
+    <Property Name="id_статуса_заказа" Type="Int32" Nullable="false" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Заказы" Relationship="ip47Model.FK_Заказы_Статусы_заказов" FromRole="Статусы_заказов" ToRole="Заказы" />
+  </EntityType>
+  <EntityType Name="Услуги">
+    <Key>
+      <PropertyRef Name="ID_услуги" />
+    </Key>
+    <Property Name="ID_услуги" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Название" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Цена" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Заказы" Relationship="ip47Model.Услуги_заказы" FromRole="Услуги" ToRole="Заказы" />
+  </EntityType>
+  <Association Name="FK_Coтрудники_Дoлжности">
+    <End Type="ip47Model.Дoлжности" Role="Дoлжности" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ip47Model.Coтрудники" Role="Coтрудники" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Дoлжности">
+        <PropertyRef Name="id_должности" />
+      </Principal>
+      <Dependent Role="Coтрудники">
+        <PropertyRef Name="Должность" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Авторизация_Coтрудники">
+    <End Type="ip47Model.Coтрудники" Role="Coтрудники" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ip47Model.Авторизация" Role="Авторизация" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Coтрудники">
+        <PropertyRef Name="id_сотрудника" />
+      </Principal>
+      <Dependent Role="Авторизация">
+        <PropertyRef Name="id_сотрудника" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказы_Клиeнты">
+    <End Type="ip47Model.Клиeнты" Role="Клиeнты" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ip47Model.Заказы" Role="Заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Клиeнты">
+        <PropertyRef Name="id_Клиента" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="Клиент" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Заказы_Статусы_заказов">
+    <End Type="ip47Model.Статусы_заказов" Role="Статусы_заказов" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ip47Model.Заказы" Role="Заказы" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Статусы_заказов">
+        <PropertyRef Name="id_статуса_заказа" />
+      </Principal>
+      <Dependent Role="Заказы">
+        <PropertyRef Name="id_статус_заказа" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Клиeнты_Организация">
+    <End Type="ip47Model.Организация" Role="Организация" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="ip47Model.Клиeнты" Role="Клиeнты" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Организация">
+        <PropertyRef Name="Код_организации" />
+      </Principal>
+      <Dependent Role="Клиeнты">
+        <PropertyRef Name="Организация" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="исполнители">
+    <End Type="ip47Model.Coтрудники" Role="Coтрудники" Multiplicity="*" />
+    <End Type="ip47Model.Заказы" Role="Заказы" Multiplicity="*" />
+  </Association>
+  <Association Name="Услуги_заказы">
+    <End Type="ip47Model.Заказы" Role="Заказы" Multiplicity="*" />
+    <End Type="ip47Model.Услуги" Role="Услуги" Multiplicity="*" />
+  </Association>
+</Schema>

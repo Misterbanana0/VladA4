@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище ip47ModelContainer" CdmEntityContainer="Entities1">
+    <EntitySetMapping Name="Coтрудники">
+      <EntityTypeMapping TypeName="ip47Model.Coтрудники">
+        <MappingFragment StoreEntitySet="Coтрудники">
+          <ScalarProperty Name="Должность" ColumnName="Должность" />
+          <ScalarProperty Name="Стаж" ColumnName="Стаж" />
+          <ScalarProperty Name="Квалификация" ColumnName="Квалификация" />
+          <ScalarProperty Name="ПаспортныеДанные" ColumnName="ПаспортныеДанные" />
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Авторизация">
+      <EntityTypeMapping TypeName="ip47Model.Авторизация">
+        <MappingFragment StoreEntitySet="Авторизация">
+          <ScalarProperty Name="Аватарка" ColumnName="Аватарка" />
+          <ScalarProperty Name="id_сотрудника" ColumnName="id сотрудника" />
+          <ScalarProperty Name="Пароль" ColumnName="Пароль" />
+          <ScalarProperty Name="Логин" ColumnName="Логин" />
+          <ScalarProperty Name="Код_авторизации" ColumnName="Код авторизации" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Дoлжности">
+      <EntityTypeMapping TypeName="ip47Model.Дoлжности">
+        <MappingFragment StoreEntitySet="Дoлжности">
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="id_должности" ColumnName="id должности" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Заказы">
+      <EntityTypeMapping TypeName="ip47Model.Заказы">
+        <MappingFragment StoreEntitySet="Заказы">
+          <ScalarProperty Name="id_статус_заказа" ColumnName="id статус заказа" />
+          <ScalarProperty Name="Дата_создания" ColumnName="Дата создания" />
+          <ScalarProperty Name="Клиент" ColumnName="Клиент" />
+          <ScalarProperty Name="C__Договора" ColumnName="№ Договора" />
+          <ScalarProperty Name="Дата_исполнения" ColumnName="Дата исполнения" />
+          <ScalarProperty Name="id_заказа" ColumnName="id заказа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Клиeнты">
+      <EntityTypeMapping TypeName="ip47Model.Клиeнты">
+        <MappingFragment StoreEntitySet="Клиeнты">
+          <ScalarProperty Name="Отчество" ColumnName="Отчество" />
+          <ScalarProperty Name="Имя" ColumnName="Имя" />
+          <ScalarProperty Name="Фамилия" ColumnName="Фамилия" />
+          <ScalarProperty Name="Номер_телефона" ColumnName="Номер телефона" />
+          <ScalarProperty Name="адрес" ColumnName="адрес" />
+          <ScalarProperty Name="Организация" ColumnName="Организация" />
+          <ScalarProperty Name="id_Клиента" ColumnName="id Клиента" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Организация">
+      <EntityTypeMapping TypeName="ip47Model.Организация">
+        <MappingFragment StoreEntitySet="Организация">
+          <ScalarProperty Name="Адрес" ColumnName="Адрес" />
+          <ScalarProperty Name="Телефон" ColumnName="Телефон" />
+          <ScalarProperty Name="E_mail" ColumnName="E-mail" />
+          <ScalarProperty Name="Полное_название" ColumnName="Полное название" />
+          <ScalarProperty Name="Код_организации" ColumnName="Код организации" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Статусы_заказов">
+      <EntityTypeMapping TypeName="ip47Model.Статусы_заказов">
+        <MappingFragment StoreEntitySet="Статусы заказов">
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="id_статуса_заказа" ColumnName="id статуса заказа" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Услуги">
+      <EntityTypeMapping TypeName="ip47Model.Услуги">
+        <MappingFragment StoreEntitySet="Услуги">
+          <ScalarProperty Name="Цена" ColumnName="Цена" />
+          <ScalarProperty Name="Название" ColumnName="Название" />
+          <ScalarProperty Name="ID_услуги" ColumnName="ID услуги" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="исполнители" TypeName="ip47Model.исполнители" StoreEntitySet="исполнители">
+      <EndProperty Name="Заказы">
+        <ScalarProperty Name="id_заказа" ColumnName="Заказ" />
+      </EndProperty>
+      <EndProperty Name="Coтрудники">
+        <ScalarProperty Name="id_сотрудника" ColumnName="Исполнитель" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="Услуги_заказы" TypeName="ip47Model.Услуги_заказы" StoreEntitySet="Услуги заказы">
+      <EndProperty Name="Услуги">
+        <ScalarProperty Name="ID_услуги" ColumnName="id услуги" />
+      </EndProperty>
+      <EndProperty Name="Заказы">
+        <ScalarProperty Name="id_заказа" ColumnName="id заказа" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
